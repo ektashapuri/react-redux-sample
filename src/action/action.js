@@ -21,7 +21,7 @@ export function receiveWeather(details){
   }
 }
 
-export function fetchWeather(){
+export function fetchWeather(place){
   const url = '';
   const getHeader = setHeader();
   return function d(dispatch){

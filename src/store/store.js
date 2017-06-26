@@ -1,8 +1,9 @@
-import { compose, createStore, applyMiddleWare } from 'redux'
+import { compose, createStore, applyMiddleware } from 'redux'
 import { loadingBarMiddleware } from 'react-redux-loading-bar'
-import {thunkMiddleware} from 'redux-thunk'
+import { thunkMiddleware } from 'redux-thunk'
 import { createLogger } from 'redux-logger'
 import rootReducer from '../reducers/reducer'
+import { reduxReactRouter } from 'redux-router';
 
 const initialState = {
   weather: {
@@ -13,8 +14,29 @@ const initialState = {
   },
 }
 
-const store = applyMiddleware(loggerMiddleware)(createStore);
+// const store = compose(
+//   applyMiddleware(thunkMiddleware, loadingBarMiddleware(), createLogger()),
+// )(createStore);
 
-export default function configureStore(initialState){
+// const store = createStore(rootReducer, initialState)
+// compose  (
+//   applyMiddleware(
+//     thunkMiddleware,
+//     loadingBarMiddleware(),
+//     createLogger()
+//   )
+// )
+
+const store =
+compose(
+  applyMiddleware(
+    thunkMiddleware,
+    loadingBarMiddleware(),
+    createLogger()
+  )
+)(createStore)(rootReducer, initialState);
+
+
+export default function configureStore(){
   return store(rootReducer, initialState)
 }

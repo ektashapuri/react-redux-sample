@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux'
+import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
+import { loadingBarReducer } from 'react-redux-loading-bar'
 
-import{ RECEIVE_WEATHER } from '../action/action'
+import { RECEIVE_WEATHER } from '../action/action'
 
 function weather(state = {
   isFetching: false,
@@ -17,6 +19,10 @@ function weather(state = {
   }
 }
 
-const rootReducer = combineReducers({ weather })
+const rootReducer = combineReducers({
+  weather,
+  routing: routerReducer,
+  loadingBar: loadingBarReducer,
+})
 
 export default rootReducer
