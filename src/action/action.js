@@ -22,7 +22,7 @@ export function receiveWeather(details){
 }
 
 export function fetchWeather(place){
-  const url = '';
+  const url = `api.openweathermap.org/data/2.5/weather?q=${place}&appId=1eb72e13a53fc12cacce8f2452ca3a52`;
   const getHeader = setHeader();
   return function d(dispatch){
     return fetch(url, getHeader)
