@@ -27,16 +27,19 @@ const initialState = {
 //   )
 // )
 
-const store =
-compose(
-  applyMiddleware(
-    thunkMiddleware,
-    loadingBarMiddleware(),
-    createLogger()
+const store = createStore(
+  rootReducer,
+  initialState,
+  compose(
+      applyMiddleware(
+      thunkMiddleware,
+      loadingBarMiddleware(),
+      createLogger()
+    )
   )
-)(createStore)(rootReducer, initialState);
+);
 
 
 export default function configureStore(){
-  return store(rootReducer, initialState)
+  return store
 }
