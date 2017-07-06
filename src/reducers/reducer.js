@@ -10,7 +10,7 @@ function weather(state = {
 }, action) {
   switch (action.type) {
     case RECEIVE_WEATHER:
-      return object.assign({}, state, {
+      return Object.assign({}, state, {
         isFetching: false,
         details: action.details,
       })
