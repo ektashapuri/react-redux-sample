@@ -6,7 +6,7 @@ import { browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 
 import configureStore from './store/store'
-import Home from './components/Home'
+import ProductContainer from './components/index'
 
 import './style/Style.less'
 
@@ -18,7 +18,7 @@ class App extends React.Component {
     const { store } = this.props
     return (
       <Provider store={store} history={history}>
-        <Home />
+        <ProductContainer />
       </Provider>
     )
   }
